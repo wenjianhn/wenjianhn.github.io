@@ -1,1 +1,15 @@
 theme: jekyll-theme-minimal
+
+plugins:
+  - jekyll-relative-links
+relative_links:
+  enabled: true
+  collections: true
+include:
+  - README.md
+  - cfs-slice.md
+  - cfs_slice.sh
+  - container-network-stalls.md
+  - dpvs-task-hung.md
+  - k8s-kernel-panic.md
+  - the-elephant-in-the-room.md
