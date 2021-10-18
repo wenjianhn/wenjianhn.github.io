@@ -67,7 +67,7 @@ And the cadvisor processes would still consumes significant CPU.
 Fix the issue of our kernel properly would require quite some heavy lifting AFAICS.
 
 We have enabled the [disable_root_cgroup_stats](https://github.com/google/cadvisor/pull/2283) option as a workaround.
-The fundamental issue will be gone after we roll out Linux 5.4.
+The fundamental issue will be gone after we rollout Linux 5.4.
 
 ## Look back on our work. How could it be better?
 1. Monitoring sched latencies of both watchdog and ksoftirqd.  
