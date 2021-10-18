@@ -59,7 +59,7 @@ Thus this issue would affect about (1 to 3)/64 of network traffic if:
 1. the network flows are hash balanced
 2. the chances of the cadvisor processes being scheduled on every CPU are the same.
 
-We can add a preemption/scheduling point to memcg_stat_show() to reduce the latency to the following range:
+We can add a preemption/scheduling point to memcg_stat_show() to reduce the latency to the following range(when only cadvisor and ksoftirqd are runable):
 `[DIV_ROUND_UP(sched_min_granularity_ns/1000/1000, 1000/CONFIG_HZ) ms, sched_latency_ns/1000/1000/2 ms]`
 
 This is not acceptable for the Redis container that is time-sensitive.
@@ -68,3 +68,10 @@ Fix the issue of our kernel properly would require quite some heavy lifting AFAI
 
 We have enabled the [disable_root_cgroup_stats](https://github.com/google/cadvisor/pull/2283) option as a workaround.
 The fundamental issue will be gone after we roll out Linux 5.4.
+
+## Look back on our work. How could it be better?
+1. Monitoring sched latencies of both watchdog and ksoftirqd.
+    Create a Grafana dashboard for this metric. Add a alert rule if needed.  
+    Depend on [runqlat](https://github.com/iovisor/bcc/blob/master/tools/runqlat.py) to produce the metrics.
+
+2. Before rollout the above monitoring feature, manually execute `runqlat` when [pingmesh](https://www.microsoft.com/en-us/research/wp-content/uploads/2016/11/pingmesh_sigcomm2015.pdf) detects a network latency issue.
