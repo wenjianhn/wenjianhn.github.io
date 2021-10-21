@@ -70,7 +70,5 @@ We have enabled the [disable_root_cgroup_stats](https://github.com/google/cadvis
 The fundamental issue will be gone after we rollout Linux 5.4.
 
 ## Look back on our work. How could it be better?
-1. Monitoring sched latencies of both watchdog and ksoftirqd.  
-    Create a Grafana dashboard for this metric. Add a alert rule if needed.  
-    Depend on [runqlat](https://github.com/iovisor/bcc/blob/master/tools/runqlat.py) to produce the metrics.
-2. Before rollout the above monitoring feature, manually execute `runqlat` when [pingmesh](https://www.microsoft.com/en-us/research/wp-content/uploads/2016/11/pingmesh_sigcomm2015.pdf) detects a network latency issue.
+Monitoring sched latencies of both watchdog and ksoftirqd.  
+See the [doc](https://www.kernel.org/doc/html/latest/scheduler/sched-stats.html#proc-pid-schedstat) of /proc/<pid>/schedstat.
