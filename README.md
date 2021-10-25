@@ -6,4 +6,5 @@ The site is under construction.
 3. [Kubernetes kernel panic](./k8s-kernel-panic.md)
 4. [A simple test on CFS slices](./cfs-slice.md)
 5. [The elephant in the room](./the-elephant-in-the-room.md)
+6. [A memory leak issue of the i40e driver](./memory-leak-issue-of-the-i40e-driver.md)
 
