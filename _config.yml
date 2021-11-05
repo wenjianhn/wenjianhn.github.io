@@ -1,3 +1,6 @@
+title: 文剑
+description: Excited about deeping diving from high level symptoms to kernel/OS issues
+
 theme: jekyll-theme-slate
 
 plugins:
@@ -5,4 +8,3 @@ plugins:
 relative_links:
   enabled: true
   collections: true
-  
