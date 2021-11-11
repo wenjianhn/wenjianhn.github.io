@@ -13,7 +13,11 @@ The blog doesn't deep dive into the code of Linux kernel packet
 processing. Let me give it a try.
 
 I was under the impression that a ksoftirqd was only utilized when the
-machine was under heavy soft interrupt load.  But during the test, the
+machine was under heavy soft interrupt load.
+(edit: since Linux v4.9(commit 4cd13c21b207 ("softirq: Let ksoftirqd
+do its job")), pending softirqs are supposed to be handled by
+ksoftirqd if it's in state TASK_RUNNING.)
+But during the test, the
 network traffic was small. And the number of packets that the softirq
 context handled was way below the `net.core.netdev_budget` which
 was 300. After digging deeper into the code, I found out the reason.
