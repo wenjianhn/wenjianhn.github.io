@@ -76,3 +76,14 @@ The fundamental issue will be gone after we rollout Linux 5.4.
 ## Look back on our work. How could it be better?
 Monitoring sched latencies of both watchdog and ksoftirqd.  
 See the [doc](https://www.kernel.org/doc/html/latest/scheduler/sched-stats.html#proc-pid-schedstat) of /proc/<pid>/schedstat.
+
+I've implemented a kernel module that dumps the stack of a CPU hogger
+that constantly consumes CPU for a specific threshold(e.g. 100 ms).  
+The following two tools are great and can also help find the root cause:
+1. https://github.com/alibaba/diagnose-tools
+2. https://github.com/bytedance/trace-irqoff
+
+Another great tool is [LinuxKI](https://github.com/HewlettPackard/LinuxKI) which is
+designed to answer two primary questions about the system:
+1. If it's running, what's it doing?
+2. If it's waiting, what's it waiting on?
